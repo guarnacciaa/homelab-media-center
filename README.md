@@ -8,12 +8,12 @@ The whole solution (gluetun + qbittorrent + radarr + sonarr + prowlarr + flareso
 
 My media center server runs with a WD Red 3Tb hard drive attached as external disk and mounted through */etc/fstab* to the */downloads* mount point:
 
-    <file system>								<mount point> 	<type> 	<options> 				<dump> 	<pass>
-    /dev/pve/root								/ 				ext4 	errors=remount-ro 		0 		1
-    UUID=9FA9-C277 								/boot/efi 		vfat 	defaults 				0 		1
-    /dev/pve/swap 								none 			swap 	sw 						0 		0
-    proc 										/proc 			proc 	defaults 				0 		0
-    UUID=7d3736ec-df24-485d-bd82-9f9f79fd7ac0	/downloads		ext4	defaults,noatime,nofail	0		0
+    <file system>                             <mount point> <type> <options>               <dump> <pass>
+    /dev/pve/root                             /             ext4   errors=remount-ro       0      1
+    UUID=9FA9-C277                            /boot/efi     vfat   defaults                0      1
+    /dev/pve/swap                             none          swap   sw                      0      0
+    proc                                      /proc         proc   defaults                0      0
+    UUID=7d3736ec-df24-485d-bd82-9f9f79fd7ac0 /downloads           defaults,noatime,nofail 0      0
 
 
 
