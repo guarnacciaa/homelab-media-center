@@ -1,7 +1,7 @@
 # Homelab Media Center
 
-Hi! This is my take at implementing a fully automated media center solution based on the *Arr family (https://wiki.servarr.com/).
-The aim of the implementation is to have all the applications running behind Gluetun connected to the Surfshark VPN.
+Hi! This is my take at implementing a fully automated media center solution based on the *Arr family (https://wiki.servarr.com/). \
+The aim of the implementation is to have all the applications running behind Gluetun connected to the Surfshark VPN. \
 The whole solution (gluetun + qbittorrent + radarr + sonarr + prowlarr + flaresolverr + bazaar + emby) runs on top of Docker which is installed in a Proxmox LXC container.
 
 ## Proxmox Host Configuration
@@ -35,7 +35,7 @@ The whole solution runs within a Promox LXC container configured as follows:
     swap: 2048
     lxc.cgroup2.devices.allow: c 10:200 rwm
     lxc.mount.entry: /dev/net dev/net none bind,create=dir
-At the time of writing this article, my Proxmox installation is based on the 8.1.4 release.
+At the time of writing this article, my Proxmox installation is based on the 8.1.4 release. \
 If for whatever reason you get an error on the tun interface, refer to the Proxmox wiki as different Proxmox releases might have different syntax to address the issue: https://pve.proxmox.com/wiki/OpenVPN_in_LXC
 
 ## Docker Compose
@@ -233,6 +233,6 @@ Below my Docker Compose file used to start up the whole solution:
     #    restart: unless-stopped
 ```
 
-The Gluetun section provides the syntax to configure Surfshark using either Wireguard or OpenVPN. For more information you can check the official Gluetun documentation at: https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/surfshark.md
-I initially based the implementation on Wireguard, but, for some still not clear reasons, qbittorrent tends to hang all the ongoing connections and it is not able to recover the downloads when that happens unless the whole stack gets restarted.  It seems other people are experiencing the same, and the workaround to that is to switch over to the OpenVPN protocol.
-I am currently using Emby as media handler and qbittorrent as Torrent client, but I left Plex, Overseerr and Deluge configurations in there for your own convenience.
+The Gluetun section provides the syntax to configure Surfshark using either Wireguard or OpenVPN. For more information you can check the official Gluetun documentation at: https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/surfshark.md \
+I initially based the implementation on Wireguard, but, for some still not clear reasons, qbittorrent tends to hang all the ongoing connections and it is not able to recover the downloads when that happens unless the whole stack gets restarted.  It seems other people are experiencing the same, and the workaround to that is to switch over to the OpenVPN protocol. \
+I am currently using Emby as media handler and qbittorrent as Torrent client, but I left Plex, Overseerr and Deluge configurations in there for your own convenience. \
