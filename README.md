@@ -43,6 +43,7 @@ If for whatever reason you get an error on the tun interface, refer to the Proxm
 ## Docker Compose
 Below my Docker Compose file used to start up the whole solution:
 
+```yml
     version: "3.8"
     services:
       gluetun:
@@ -167,23 +168,23 @@ Below my Docker Compose file used to start up the whole solution:
           - /downloads/tvseries:/tv
         restart: unless-stopped
 
-	  emby:
-	    image: emby/embyserver
-	    container_name: embyserver
-	    #runtime: nvidia # Expose NVIDIA GPUs
-	    network_mode: host # Enable DLNA and Wake-on-Lan
-	    environment:
-	      - UID=1000 # The UID to run emby as (default: 2)
-	      - GID=100 # The GID to run emby as (default 2)
-	      - GIDLIST=100 # A comma-separated list of additional GIDs to run emby as (default: 2)
-	    volumes:
-	      - ./emby/config:/config
-	      - /downloads/tvseries:/tvseries
-	      - /downloads/movies:/movies
-	    ports:
-	      - 8096:8096 # HTTP port
-	      - 8920:8920 # HTTPS port
-	    restart: unless-stopped
+      emby:
+        image: emby/embyserver
+        container_name: embyserver
+        #runtime: nvidia # Expose NVIDIA GPUs
+        network_mode: host # Enable DLNA and Wake-on-Lan
+        environment:
+          - UID=1000 # The UID to run emby as (default: 2)
+          - GID=100 # The GID to run emby as (default 2)
+          - GIDLIST=100 # A comma-separated list of additional GIDs to run emby as (default: 2)
+        volumes:
+          - ./emby/config:/config
+          - /downloads/tvseries:/tvseries
+          - /downloads/movies:/movies
+        ports:
+          - 8096:8096 # HTTP port
+          - 8920:8920 # HTTPS port
+        restart: unless-stopped
 
     #  deluge:
     #    image: lscr.io/linuxserver/deluge:latest
@@ -232,6 +233,7 @@ Below my Docker Compose file used to start up the whole solution:
     #    ports:
     #      - 5055:5055
     #    restart: unless-stopped
+```
 
 The Gluetun section provides the syntax to configure Surfshark using either Wireguard or OpenVPN. For more information you can check the official Gluetun documentation at: https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/surfshark.md
 I initially based the implementation on Wireguard, but, for some still not clear reasons, qbittorrent tends to hang all the ongoing connections and it is not able to recover the downloads when that happens unless the whole stack gets restarted.  It seems other people are experiencing the same, and the workaround to that is to switch over to the OpenVPN protocol.
