@@ -1,5 +1,3 @@
-# homelab-media-center
-My implementation of gluetun + qbittorrent + radarr + sonarr + prowlarr + flaresolverr + bazaar over Docker running on Proxmox
 # Homelab Media Center
 
 Hi! This is my take at implementing a fully automated media center solution based on the *Arr family (https://wiki.servarr.com/).
